@@ -5,6 +5,7 @@ const PORT = 5000;
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const authRoute = require("./routes/auth");
+const userRouter = require("./routes/users");
 dotenv.config();
 app.use(express.json());
 mongoose
@@ -16,10 +17,11 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
-  res.send("Hello World, Im building instagram");
+  res.send("Hello World, Im building Netflix");
 });
 
 app.use("/API/auth", authRoute);
+app.use("/API/users", userRouter);
 
 app.listen(PORT, () => {
   console.log("server is running on", PORT);
